@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'apk add --no-cache chromium udev ttf-freefont'
-                sh 'ng test --browsers ChromeHeadless --watch=false'
+                sh 'ng test --watch=false --progress=false --browsers=ChromeHeadlessCI'
             }
         }
         stage('Build') {

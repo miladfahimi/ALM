@@ -27,11 +27,13 @@ pipeline {
             }
         }
         stage('Build docker image'){
+            agent none
             steps {
                 sh '/usr/bin/docker build -t $DOCKER_USR:alm .'
             }
         }
         stage('Push docker image'){
+            agent none
             steps {
                 sh '/usr/bin/docker login -u $DOCKER_USR -p $DOCKER_PSW'
                 sh '/usr/bin/docker push $DOCKER_USR:alm'

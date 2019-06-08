@@ -28,13 +28,13 @@ pipeline {
         }
         stage('Build docker image'){
             steps {
-                sh 'docker build -t $DOCKER_USR:alm .'
+                sh '/usr/bin/docker build -t $DOCKER_USR:alm .'
             }
         }
         stage('Push docker image'){
             steps {
-                sh 'docker login -u $DOCKER_USR -p $DOCKER_PSW'
-                sh 'docker push $DOCKER_USR:alm'
+                sh '/usr/bin/docker login -u $DOCKER_USR -p $DOCKER_PSW'
+                sh '/usr/bin/docker push $DOCKER_USR:alm'
             }
         }
     }

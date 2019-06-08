@@ -4,6 +4,9 @@ pipeline {
             image 'node:10.16.0-alpine'
         }
     }
+    environment {
+        CHROME_BIN = '/usr/bin/chromium-browser'
+    }
     stages {
         stage('Fetch dependencies') {
             steps {

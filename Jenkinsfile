@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine' 
+        }
+    }
+    stages {
+        stage('Fetch dependencies') {
+            steps {
+                sh 'npm install -g @angular/cli@8.0.2'
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'ng test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'ng build --prod --aot --build-optimizer --extract-css --output-hashing=all'
+            }
+        }
+    }
+}

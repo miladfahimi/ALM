@@ -15,11 +15,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'ng test --watch=false --browsers=ChromeHeadlessCI'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'ng build --prod --aot --build-optimizer --extract-css --output-hashing=all'

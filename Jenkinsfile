@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'ng test --watch=false --progress=false --browsers=ChromeHeadlessCI'
+                sh 'ng test --watch=false --browsers=ChromeHeadlessCI'
             }
         }
         stage('Build') {

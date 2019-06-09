@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'circleci/node:10.16-stretch-browsers-legacy'
+            image 'circleci/node:10.16.0-jessie-browsers'
         }
     }
     environment {

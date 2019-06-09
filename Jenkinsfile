@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:10.16.0-alpine'
+            image 'circleci/node:10.16-stretch-browsers-legacy'
         }
     }
     environment {
@@ -27,21 +27,11 @@ pipeline {
             }
         }
         stage('Build docker image'){
-            agent {
-                node {
-                    label 'Master'
-                }
-            }
             steps {
                 sh 'docker build -t $DOCKER_USR:alm .'
             }
         }
         stage('Push docker image'){
-            agent {
-                node {
-                    label 'Master'
-                }
-            }
             steps {
                 sh 'docker login -u $DOCKER_USR -p $DOCKER_PSW'
                 sh 'docker push $DOCKER_USR:alm'
